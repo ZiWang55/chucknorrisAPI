@@ -6,20 +6,26 @@ const options = {
 		'X-RapidAPI-Key': '9e3e0e4eebmsh0c66b6e438da666p10acd5jsn572fc3847907'
 	}
 };
-
-fetch('https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random', options)
-	.then(response =>  response.json())
-    .then(response => {
-        console.log(response)
-       value.textContent = response.value;
-       icon.src=response.icon_url;
-    })
-	.catch(err => console.error(err));
-
-
+chuckJokes()	.catch(err => console.error(err));
+;
+async function chuckJokes() {
+    const response = await fetch('https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random', options);
+    const chuck = await response.json()
+    console.log(chuck)
+    const value = await chuck.value
+    console.log(value)
+    container.textContent=value
+}
+// fetch('https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random', options)
+// 	.then(response =>  response.json())
+//     .then(response => {
+//         console.log(response)
+//        value.textContent = response.value;
+//        icon.src=response.icon_url;
+//     })
+// 	.catch(err => console.error(err));
 
 const app = document.getElementById('root');
-const value = document.createElement('div')
 const icon = document.createElement('img')
-app.appendChild(icon)
-app.appendChild(value)
+const container = document.createElement('div')
+app.appendChild(container)
