@@ -10,13 +10,16 @@ const options = {
 fetch('https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random', options)
 	.then(response =>  response.json())
     .then(response => {
-        console.log(response); 
-        return response.value
-    })
-    .then(value => {
-        console.log(value)
-        document.getElementById('root').textContent=value;
-       
+        console.log(response)
+       value.textContent = response.value;
+       icon.src=response.icon_url;
     })
 	.catch(err => console.error(err));
 
+
+
+const app = document.getElementById('root');
+const value = document.createElement('div')
+const icon = document.createElement('img')
+app.appendChild(icon)
+app.appendChild(value)
