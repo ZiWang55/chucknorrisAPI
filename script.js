@@ -15,6 +15,8 @@ async function chuckJokes() {
     const value = await chuck.value//grabbing the jokes
     console.log(value)
     const icon = await chuck.icon_url//grabbing the icon
+    //reload api value for new joke
+    
     //DOM
     container.textContent = value
     icondiv.src=icon
